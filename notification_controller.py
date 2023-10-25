@@ -11,8 +11,11 @@ class NotificationController:
         self.notification_min_interval = 300 # 5 seconds
         self.last_notification_value = -1
 
-        self.spawn_notification("WhatsApp \n +358 40 4452921", "assets/notification_icons/whatsApp_icon.png",
-                                "Millane päivä sulla on huomenna", "assets/mies_kuva.png")
+        self.important_notification_timer = random.randint(0.5*60*60, 2*60*60)
+        self.important_notification_played = False
+
+
+
 
 
 
@@ -26,8 +29,8 @@ class NotificationController:
 
 
         if (random.randint(0, 400) == 0 and self.notification_min_interval <= 0 and self.system_settings.disable_notifications == False):
-            self.notification_min_interval = 1
-            notification_value = random.randint(0,10)
+            self.notification_min_interval = 300
+            notification_value = random.randint(0,13)
 
             temp = notification_value
             if (temp == self.last_notification_value):
@@ -42,7 +45,7 @@ class NotificationController:
 
             elif (notification_value == 2):
                 self.spawn_notification("Snapchat", "assets/notification_icons/snapchat_icon.png",
-                                        "Marjatta lähetti sinulle snapin")
+                                        "Marjatta lähetti sinulle Snapin")
 
             elif (notification_value == 3):
                 self.spawn_notification("Snapchat", "assets/notification_icons/snapchat_icon.png",
@@ -73,9 +76,24 @@ class NotificationController:
                                         "niilo22 - Kiitos lahkotuksesta", "assets/niilo22.png", (255, 0, 0))
 
             elif (notification_value == 10):
-                pass
+                self.spawn_notification("WhatsApp \n Jarmo Ilkkala", "assets/notification_icons/whatsApp_icon.png",
+                                        "Millane päivä sulla on huomenna", "assets/notification_icons/mies_kuva.png")
+            elif (notification_value == 11):
+                self.spawn_notification("Snapchat", "assets/notification_icons/snapchat_icon.png",
+                                        "Timppa Ahopelto lähetti sinulle Snapin")
+
+            elif (notification_value == 12):
+                self.spawn_notification("WhatsApp \n Pentti", "assets/notification_icons/whatsApp_icon.png",
+                                        "Et oo koskaan tehny noin", "assets/notification_icons/pentti_kuva.png")
         if (self.system_settings.disable_notifications == True):
-            print("aids")
+
+            if (self.important_notification_timer > 0):
+                self.important_notification_timer -= 1
+            elif (self.important_notification_played == False):
+                self.important_notification_played = True
+                self.spawn_notification("Messages\n Olli-kaveri", "assets/notification_icons/messages_icon.png",
+                                        "Moi, ovikoodi on 6471")
+
 
 
     def get_notifications(self):
@@ -130,7 +148,7 @@ class Notification:
         if (additional_pic != None):
             self.additional_icon_surface = pygame.image.load(additional_pic).convert_alpha()
             self.additional_icon_surface = pygame.transform.scale(self.additional_icon_surface, (80 * RS, 70 * RS))
-            self.surface.blit(self.additional_icon_surface, (RS * 340, RS * 40))
+            self.surface.blit(self.additional_icon_surface, (RS * 360, RS * 40))
 
 
     def update(self):

@@ -55,7 +55,6 @@ class Application:
         self.notification_controller.updade()
 
 
-
         exit_state = self.states[self.state].get_exit_state_value()
         if (exit_state != -1):
             self.state = exit_state

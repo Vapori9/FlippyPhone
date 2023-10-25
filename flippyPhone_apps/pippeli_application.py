@@ -1,9 +1,9 @@
 from flippyPhone_apps.flippyPhone_application import *
 class Pippeli_application(FlippyPhone_application):
     # initialization
-    def __init__(self):
+    def __init__(self, sys_settings):
         # initialize parent
-        FlippyPhone_application.__init__(self)
+        FlippyPhone_application.__init__(self, sys_settings)
         self.pippeli = pygame.image.load("assets/pippeli_application/pippeli.png").convert_alpha()
         self.pippeli = pygame.transform.scale(self.pippeli, (self.pippeli.get_width() * 0.5, self.pippeli.get_height() * 0.5))
 
