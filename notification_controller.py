@@ -11,8 +11,8 @@ class NotificationController:
         self.notification_min_interval = 300 # 5 seconds
         self.last_notification_value = -1
 
-        self.spawn_notification("Youtube", "assets/notification_icons/youtube_icon.png",
-                                "niilo22 - Kiitos lahkotuksesta", "assets/niilo22.png", (255, 0, 0))
+        self.spawn_notification("WhatsApp \n +358 40 4452921", "assets/notification_icons/whatsApp_icon.png",
+                                "Millane päivä sulla on huomenna", "assets/mies_kuva.png")
 
 
 
@@ -70,11 +70,10 @@ class NotificationController:
 
             elif (notification_value == 9):
                 self.spawn_notification("Youtube", "assets/notification_icons/youtube_icon.png",
-                                        "niilo22 - Kiitos lahkotuksesta", "assets/niilo22.png", (255,0,0))
+                                        "niilo22 - Kiitos lahkotuksesta", "assets/niilo22.png", (255, 0, 0))
 
             elif (notification_value == 10):
-                self.spawn_notification("Youtube", "assets/notification_icons/youtube_icon.png",
-                                        "niilo22 - Kiitos lahkotuksesta", "assets/niilo22.png", (255, 0, 0))
+                pass
         if (self.system_settings.disable_notifications == True):
             print("aids")
 
