@@ -6,6 +6,7 @@ from flippyPhone_apps.notification_settings_application import *
 from flippyPhone_apps.gallery_application import *
 from flippyPhone_apps.music_application import *
 from flippyPhone_apps.snake_application import *
+from flippyPhone_apps.messages_application import *
 class FlippyPhone_main_selection_state(State):
     def __init__(self, sys_settings):
         State.__init__(self, sys_settings)
@@ -15,6 +16,8 @@ class FlippyPhone_main_selection_state(State):
 
 
         self.notification_settings_application = Notification_settings_application(self.system_settings)
+
+        self.messages_application = Messages_application(self.system_settings)
 
         self.gallery_application = Gallery_application(self.system_settings)
 
@@ -28,7 +31,7 @@ class FlippyPhone_main_selection_state(State):
             0: None,
             1: self.snake_application,
             2: self.notification_settings_application,
-            3: None,
+            3: self.messages_application,
             4: self.gallery_application,
             5: self.music_application,
             6: self.tamago_application
@@ -222,6 +225,9 @@ class FlippyPhone_main_selection_state(State):
 
         if (self.cursor == [1,0]):
             self.current_application_index = 2
+
+        if (self.cursor == [2,0]):
+            self.current_application_index = 3
 
         if (self.cursor == [0,1]):
             self.current_application_index = 4

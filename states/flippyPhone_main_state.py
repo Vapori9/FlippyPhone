@@ -14,11 +14,14 @@ class FlippyPhone_main_state(State):
 
         self.widen_phone_button_rect = (0, 0, size[0], size[1]*0.05)
 
+        self.close_sound = pygame.mixer.Sound("sounds/close_flap.wav")
+
     def update(self, click):
         if (click != None):
             clickRect = (click[0], click[1], 2, 2)
             if (rectCollision(self.close_phone_button_rect, clickRect)):
                 self.exit_state = 3
+                self.close_sound.play()
 
             if (rectCollision(self.widen_phone_button_rect, clickRect)):
                 self.exit_state = 5

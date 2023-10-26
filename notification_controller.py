@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, math
 from settings import *
 class NotificationController:
     def __init__(self, sys_settings):
@@ -138,7 +138,7 @@ class Notification:
         self.surface.blit(self.icon_surface, (RS*15, RS*20))
 
         # Draw the text naming the application the notification is from
-        self.font = pygame.font.SysFont(None, 22)
+        self.font = pygame.font.SysFont(None, math.ceil(22*RS))
         self.name_text = self.font.render(app_name, True, titleColor)
         self.surface.blit(self.name_text, (RS*100, RS*20))
 
@@ -169,7 +169,7 @@ class Notification:
         return self.surface
 
     def get_y_coord(self):
-        return RS*self.y_coord
+        return self.y_coord
 
     def get_played(self):
         return self.display_timer < 0

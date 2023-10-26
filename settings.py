@@ -4,7 +4,7 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 # Set the width and height of the screen [width, height]
-size = (1*480, 1*800)
+size = (1.2*480, 1.2*800)
 
 # The base resolution everything is thought to be in, the screen coordinates the objects position should be withing
 # to be visible on the screen
